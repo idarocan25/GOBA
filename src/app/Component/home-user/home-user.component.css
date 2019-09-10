@@ -1,0 +1,136 @@
+.menu-app {
+  background-image: url(../../../assets/back-parameter.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  align-items: center;
+  overflow: auto;
+  /* background-position-y: bottom; */
+  /* background-attachment: fixed; */
+  height: 230px;
+  margin: 15px;
+  border-radius: 16px;
+}
+.content-m {
+  background: transparent;
+  height: 169px;
+  border-radius: 0;
+}
+
+.content-m:hover {
+  background-image: linear-gradient(to right, rgba(255, 36, 39, 0.8), rgba(147, 38, 153, 0.8));
+}
+.title-item-menu {
+  background-image: linear-gradient(to right, rgba(255, 36, 39, 0.8), rgba(147, 38, 153, 0.8));
+  height: 61px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.number-title-m {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  font-family: 'Comfortaa-Bold';
+  margin: 0;
+}
+.services {
+  background: #f2f2f2;
+  position: fixed;
+  bottom: -1px;
+  width: 100%;
+  margin: 0px !important;
+}
+
+.content-services div {
+  position: relative;
+  height: 38px;
+  width: 160px;
+  line-height: 35px;
+  padding: 0;
+  color: #fff;
+  border-radius: 50px;
+  background: transparent;
+  margin: 10px;
+}
+
+.content-services div:hover span.circulo {
+  left: 100%;
+  margin-left: -32px;
+  background: #fff;
+}
+
+.content-services div:hover span.titulo {
+  opacity: 0;
+}
+
+.content-services div:hover span.titulo-hover {
+  opacity: 1;
+  color: #fff;
+}
+
+.content-services div span.titulo-hover {
+  opacity: 0;
+}
+
+.content-services div span.circulo {
+  display: block;
+  color: #fff;
+  position: absolute;
+  float: left;
+  margin: 1px;
+  line-height: 30px;
+  height: 32px;
+  width: 32px;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  border-radius: 50%;
+}
+
+.content-services div span.circulo i {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.content-services div span.titulo,
+.content-services div span.titulo-hover {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 400;
+  transition: .5s;
+  text-transform: uppercase;
+  font-size: 10.5px;
+  font-family: 'Comfortaa-Bold';
+}
+
+.content-services div span.titulo {
+  right: 15px
+}
+
+.content-services div span.titulo-hover {
+  left: 15px
+}
+/*----------Colores de los botones----------*/
+
+.content-services .dar {
+  border: 2px solid #00cbff;
+}
+
+.content-services .dar:hover,
+.content-services .dar span.circulo {
+  background: #00cbff;
+}
+
+.content-services .dar:hover span.circulo,
+.content-services .dar span.titulo {
+  color: #163460;
+}

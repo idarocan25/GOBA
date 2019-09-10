@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // Dependencia para alertar
-import { ToastrModule } from 'ngx-toastr'; 
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //
 import { AppComponent } from './app.component';
@@ -12,14 +12,21 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // Dependecia para utilizar ngmodel en los formularios
 import { FormsModule } from '@angular/forms';
+//Modulo de Rutas
+import {Routes, RouterModule,} from '@angular/router';
+import { HomeUserComponent } from './Component/home-user/home-user.component';
+const rutas = [
+              {path:'',component:HomePrincipalComponent },
+              {path:'user', component: HomeUserComponent}
 
-
+            ];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavegationComponent,
-    HomePrincipalComponent
+    HomePrincipalComponent,
+    HomeUserComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +34,10 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(rutas)
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

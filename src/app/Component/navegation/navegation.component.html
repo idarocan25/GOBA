@@ -1,156 +1,326 @@
 <div class="mb-10 col-12 content-header">
-        <div class="d-flex">
-            <div>
-                <img width="109" src="../../../assets/brand-logo.png">
-            </div>
-            <div class="d-flex-components pright">
-                <div>
-                    <button class="pulse animated infinite btn-principal m-lr-15" (click)="open(content)">Registrarse</button>
-                    <a class="btn a-btn access-header ">Acceder Cuenta</a>
+  <div class="d-flex">
+    <div>
+      <img width="109" src="../../../assets/brand-logo.png">
+    </div>
+    <div class="d-flex-components pright">
+      <div>
+        <button class="pulse animated infinite btn-principal m-lr-15" (click)="open(content)">Registrese</button>
+        <a class="btn a-btn access-header" (click)="acceder(accederCuenta)">Acceder Cuenta</a>
+      </div>
+      <div class="content-language">
+        <div ngbDropdown class="d-inline-block">
+          <a id="dropdownBasic1 " ngbDropdownToggle>
+            <img width="20" src="../../../assets/spanish.png" alt="">
+          </a>
+          <div class="dropdown-language" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div class="dropdown-item items-drop d-flex">
+              <div class="content-lang-icon text-center">
+                <img width="47" src="../../../assets/spanish.png">
+                <div class="language-text">
+                  Español
                 </div>
+              </div>
+              <div class="content-lang-icon text-center">
+                <img width="47" src="../../../assets/english.png">
+                <div class="language-text">
+                  Ingles
+                </div>
+              </div>
             </div>
-            <!-- <div class="content-language">
-                    <div class="dropdown">
-                        <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img width="20" src="../../../assets/english.png" alt="">
-                        </a>
-                        <div class="dropdown-menu dropdown-language" aria-labelledby="dropdownMenuButton">
-                            <div class="dropdown-item items-drop d-flex">
-                                <div class="content-lang-icon text-center">
-                                    <img width="47" src="../../../assets/spanish.png">
-                                    <div class="language-text">
-                                        Español
-                                    </div>
-                                </div>
-                                <div class="content-lang-icon text-center">
-                                    <img width="47" src="../../../assets/english.png">
-                                    <div class="language-text">
-                                        Ingles
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+          </div>
+
         </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <!--Modal -->
 <ng-template #content let-modal>
-        <div class="modal-header">
-            <h4 class="modal-title text-center" id="modal-basic-title" *ngIf="ocultar == true">Registrarse</h4>
-            <h4 class="modal-title" id="modal-basic-title" *ngIf="DatosGenelaresCliente == true">Datos Generales</h4>
-            <h4 class="modal-title" id="modal-basic-title" *ngIf="DatosContactoCliente == true">Datos Contacto</h4>
-    
+  <div class="modal-header">
+    <h4 class="modal-title text-center letterGoba" id="modal-basic-title" *ngIf="ocultar == true"
+      [ngStyle]="{'font-size':'medium'}">CONFIRME A QUE GRUPO DE USUARIO PERTENECE</h4>
+  </div>
+  <div id="divCliente" *ngIf="divCliente == true">
+    <div class="lineal-squater-img" *ngIf="DatosGenelaresCliente == true">
+      <h4 class="modal-title" id="modal-basic-title"> Datos Generales</h4>
+    </div>
+    <div class="lineal-squater-img" *ngIf="DatosContactoCliente == true">
+      <h4 class="modal-title" id="modal-basic-title">Datos Contacto</h4>
+    </div>
+    <div class="lineal-img" *ngIf="ocultar == true"></div>
+    <div class="modal-body">
+      <div class="row text-center" *ngIf="ocultar == true">
+        <div class="col-md-6">
+          <img src="../../../assets/Cliente.png" (click)="Cliente()" class="btn btn-img" width="90%">
         </div>
-        <div class="modal-body">
-            <div class="row" *ngIf="ocultar == true">
-                <div class="col-md-12 text-center">
-                    <b>Seleccione Tipo De Usuario</b>
-                </div>
-            </div>
-            <div class="row text-center" *ngIf="ocultar == true">
-                <div class="col-md-6">
-                    <img src="../../../assets/Cliente.png" (click)="Cliente()" class="btn btn-img" width="90%">
-                </div>
-                <div class="col-md-6">
-                    <img src="../../../assets/Aliado-Comercial.png" class="btn btn-img" width="90%">
-                </div>
-            </div>
-            <div class="row" *ngIf="DatosGenelaresCliente ==true">
-                <div class="col-md 12">
-                    <form>
-                        <div class="form-group">
-                            <label>RUC *</label>
-                            <input type="text" class="form-control" name="Ruc" [(ngModel)]="Ruc"placeholder="Escriba Su Ruc" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Razon Social *</label>
-                            <input type="text" class="form-control" name="RazonSocial" [(ngModel)]="RazonSocial" 
-                                placeholder="Escriba Su Razon Social" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Ciudad</label>
-                            <select name="Ciudades" [(ngModel)]="Ciudades" class="form-control">
-                                <option value="1">Bogota</option>
-                                <option value="2">Medellin</option>
-                                <option value="3">Barranquilla</option>
-                                <option value="4">Cartagena</option>
-                                <option value="5">Bucaramanga</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Dirrecion *</label>
-                            <input type="text" class="form-control" name="Dirrecion" [(ngModel)]="Dirrecion"  placeholder="Dirrecion" required>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a class="btn pulse animated infinite btn-principal m-lr-15" (click)="Cancelar()"> 
-                                        <label  class="label">Cancelar</label></a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="Scliente()">
-                                        <label class="label">Siguiente</label></a>
-                                </div>
-                            </div>
-    
-    
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="row" *ngIf="DatosContactoCliente == true">
-                <div class="col-md-12">
-                    <form>
-                        <div class="form-group">
-                            <label>Contacto *</label>
-                            <input type="text" class="form-control" [(ngModel)]="Contacto" name="Contacto" placeholder="Escriba Nombre Contacto">
-                        </div>
-                        <div class="form-group">
-                            <label>Telefo Empresa *</label>
-                            <input type="text" class="form-control" name="TelefonoEmpresa" [(ngModel)]="TelefonoEmpresa"
-                                placeholder="Escriba el telefono de su empresa">
-                        </div>
-                        <div class="form-group">
-                            <label>Celular *</label>
-                            <input type="text" class="form-control" name="ContactoCelular" [(ngModel)]="ContactoCelular"
-                                placeholder="Escriba Celular Contacto">
-                        </div>
-                        <div class="form-group">
-                            <label>Cargo *</label>
-                            <input type="text" class="form-control" name="CargoContacto"  [(ngModel)]="CargoContacto" placeholder="Cargo Contacto">
-                        </div>
-                        <div class="form-group">
-                            <label>Correo Electronico *</label>
-                            <input type="email" class="form-control" name="EmailContacto" [(ngModel)]="EmailContacto"
-                                placeholder="Correo Electronico Contacto">
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="Cancelar()"><label
-                                            class="label">Cancerlar</label></a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="FCliente()"><label
-                                            class="label">Finalizar</label></a>
-                                </div>
-                            </div>
-    
-    
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- <div class="row">
-                <div class="col-md-12">
-                    <div class="text-cente">
-                        <img src="../../../assets/UsuarioCreado.JPG" alt="Usuario" width="30px">
-                    </div>
-                </div>
-            </div> -->
+        <div class="col-md-6">
+          <img src="../../../assets/Aliado-Comercial.png" (click)="Aliado()" class="btn btn-img" width="90%">
         </div>
-    
-    
-    </ng-template>
+      </div>
+      <div class="row" *ngIf="DatosGenelaresCliente ==true">
+        <div class="col-md 12">
+          <form>
+            <div class="form-group">
+              <label>RUC *</label>
+              <input type="text" class="form-control" name="Ruc" [(ngModel)]="Ruc" placeholder="Digitar RUC" required>
+            </div>
+            <div class="form-group">
+              <label>Razón Social *</label>
+              <input type="text" class="form-control" name="RazonSocial" [(ngModel)]="RazonSocial"
+                placeholder="Digitar Razón Social" required>
+            </div>
+            <div class="form-group">
+              <label>Ciudad</label>
+              <select name="Ciudades" [(ngModel)]="Ciudades" class="form-control">
+                <option value="1">Bogotá</option>
+                <option value="2">Medellin</option>
+                <option value="3">Barranquilla</option>
+                <option value="4">Cartagena</option>
+                <option value="5">Bucaramanga</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Dirección *</label>
+              <input type="text" class="form-control" name="Direccion" [(ngModel)]="Direccion" placeholder="Direccion"
+                required>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <a class="btn pulse animated infinite btn-principal m-lr-15" (click)="Cancelar()">
+                    <label class="label">Cancelar</label></a>
+                </div>
+                <div class="col-md-6">
+                  <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="Scliente()">
+                    <label class="label">Siguiente</label></a>
+                </div>
+              </div>
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+      <a class="btn-principal m-lr-15 btn a-btn" (click)="modal.close('Save click')" *ngIf="ocultar == true"><label
+          class="label">Cancelar</label></a>
+      <div class="row" *ngIf="DatosContactoCliente == true">
+        <div class="col-md-12">
+          <form>
+            <div class="form-group">
+              <label>Contacto *</label>
+              <input type="text" class="form-control" [(ngModel)]="Contacto" name="Contacto"
+                placeholder="Escriba Nombre Contacto">
+            </div>
+            <div class="form-group">
+              <label>Telefo Empresa *</label>
+              <input type="text" class="form-control" name="TelefonoEmpresa" [(ngModel)]="TelefonoEmpresa"
+                placeholder="Escriba el telefono de su empresa">
+            </div>
+            <div class="form-group">
+              <label>Celular *</label>
+              <input type="text" class="form-control" name="ContactoCelular" [(ngModel)]="ContactoCelular"
+                placeholder="Escriba Celular Contacto">
+            </div>
+            <div class="form-group">
+              <label>Cargo *</label>
+              <input type="text" class="form-control" name="CargoContacto" [(ngModel)]="CargoContacto"
+                placeholder="Cargo Contacto">
+            </div>
+            <div class="form-group">
+              <label>Correo Electronico *</label>
+              <input type="email" class="form-control" name="EmailContacto" [(ngModel)]="EmailContacto"
+                placeholder="Correo Electronico Contacto">
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="Cancelar()"><label
+                      class="label">Cancelar</label></a>
+                </div>
+                <div class="col-md-6">
+                  <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="FCliente()"><label
+                      class="label">Finalizar</label></a>
+                </div>
+              </div>
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row" *ngIf="UsuarioExitoso == true">
+        <div class="col-md-12">
+          <div class="text-cente">
+            <img src="../../../assets/UsuarioCreado.PNG" alt="Usuario" width="130px">
+          </div>
+          <h4 class="modal-title text-center letterGoba" id="modal-basic-title" [ngStyle]="{'font-size':'medium'}">EL
+            USUARIO HA SIDO CREADO</h4>
+          <h5 class="letterGoba">Se envió información a su correo electrónico</h5>
+        </div>
+        <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="modal.close('Save click')"><label
+            class="label">Aceptar</label></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="divAliado" *ngIf="divAliado == true">
+    <div class="lineal-squater-img" *ngIf="DatosGenelaresAliado == true">
+      <h4 class="modal-title" id="modal-basic-title"> Datos Generales</h4>
+    </div>
+    <div class="lineal-squater-img" *ngIf="DatosContactoAliado == true">
+      <h4 class="modal-title" id="modal-basic-title">Datos Contacto</h4>
+    </div>
+    <div class="lineal-squater-img" *ngIf="DatosContactoAliado == true">
+      <h4 class="modal-title" id="modal-basic-title">Datos Contacto</h4>
+    </div>
+    <div class="lineal-img" *ngIf="ocultar == true"></div>
+    <div class="modal-body">
+      <div class="row text-center" *ngIf="ocultar == true">
+        <div class="col-md-6">
+          <img src="../../../assets/Cliente.png" (click)="Cliente()" class="btn btn-img" width="90%">
+        </div>
+        <div class="col-md-6">
+          <img src="../../../assets/Aliado-Comercial.png" (click)="Aliado()" class="btn btn-img" width="90%">
+        </div>
+      </div>
+      <div class="row" *ngIf="DatosGenelaresAliado ==true">
+        <div class="col-md 12">
+          <form>
+            <div class="form-group">
+              <label>RUC *</label>
+              <input type="text" class="form-control" name="Ruc" [(ngModel)]="Ruc" placeholder="Digitar RUC" required>
+            </div>
+            <div class="form-group">
+              <label>Razón Social *</label>
+              <input type="text" class="form-control" name="RazonSocial" [(ngModel)]="RazonSocial"
+                placeholder="Digitar Razón Social" required>
+            </div>
+            <div class="form-group">
+              <label>Ciudad</label>
+              <select name="Ciudades" [(ngModel)]="Ciudades" class="form-control">
+                <option value="1">Bogotá</option>
+                <option value="2">Medellin</option>
+                <option value="3">Barranquilla</option>
+                <option value="4">Cartagena</option>
+                <option value="5">Bucaramanga</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Dirección *</label>
+              <input type="text" class="form-control" name="Direccion" [(ngModel)]="Direccion" placeholder="Direccion"
+                required>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <a class="btn pulse animated infinite btn-principal m-lr-15" (click)="Cancelar()">
+                    <label class="label">Cancelar</label></a>
+                </div>
+                <div class="col-md-6">
+                  <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="Scliente()">
+                    <label class="label">Siguiente</label></a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <a class="btn-principal m-lr-15 btn a-btn" (click)="modal.close('Save click')" *ngIf="ocultar == true"><label
+        class="label">Cancelar</label></a>
+    <div class="row" *ngIf="DatosContactoAliado == true">
+      <div class="col-md-12">
+        <form>
+          <div class="form-group">
+            <label>Contacto *</label>
+            <input type="text" class="form-control" [(ngModel)]="Contacto" name="Contacto"
+              placeholder="Escriba Nombre Contacto">
+          </div>
+          <div class="form-group">
+            <label>Telefo Empresa *</label>
+            <input type="text" class="form-control" name="TelefonoEmpresa" [(ngModel)]="TelefonoEmpresa"
+              placeholder="Escriba el telefono de su empresa">
+          </div>
+          <div class="form-group">
+            <label>Celular *</label>
+            <input type="text" class="form-control" name="ContactoCelular" [(ngModel)]="ContactoCelular"
+              placeholder="Escriba Celular Contacto">
+          </div>
+          <div class="form-group">
+            <label>Cargo *</label>
+            <input type="text" class="form-control" name="CargoContacto" [(ngModel)]="CargoContacto"
+              placeholder="Cargo Contacto">
+          </div>
+          <div class="form-group">
+            <label>Correo Electronico *</label>
+            <input type="email" class="form-control" name="EmailContacto" [(ngModel)]="EmailContacto"
+              placeholder="Correo Electronico Contacto">
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="Cancelar()"><label
+                    class="label">Cancelar</label></a>
+              </div>
+              <div class="col-md-6">
+                <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="FAliado()"><label
+                    class="label">Finalizar</label></a>
+              </div>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="UsuarioAliadoExitoso == true">
+    <div class="col-md-12">
+      <div class="text-cente">
+        <img src="../../../assets/UsuarioCreado.PNG" alt="Usuario" width="130px">
+      </div>
+      <h4 class="modal-title text-center letterGoba" id="modal-basic-title" [ngStyle]="{'font-size':'medium'}">EL
+        USUARIO HA SIDO CREADO</h4>
+      <h5 class="letterGoba">Se envió información a su correo electrónico</h5>
+    </div>
+    <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" (click)="modal.close('Save click')"><label
+        class="label">Aceptar</label></a>
+  </div>
+</ng-template>
+<!--Modal Acceder Cuenta-->
+<ng-template #accederCuenta let-modal>
+  <div class="modal-header">
+    <div class="text-center" style="width:100%">
+      <img width="109" src="../../../assets/brand-logo.png" />
+    </div>
+  </div>
+  <div class="lineal-modal-img"></div>
+
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="usr" class="title-input">Usuario *</label>
+        <input type="text" class="form-control form-global" id="usr" [(ngModel)]="user" name="user"
+          placeholder="Digite su Usuario">
+      </div>
+      <div class="form-group">
+        <label for="usr" class="title-input">Contraseña *</label>
+        <input type="password" class="form-control form-global" id="password" [(ngModel)]="password" name="password"
+          placeholder="Digite Su Contraseña">
+        <div class="reset-pass-content">
+          Reestablecer Contraseña
+        </div>
+      </div>
+      <br>
+      <br>
+      <!-- Modal footer -->
+      <div class=" modal-footer text-center ">
+        <button type="button" class=" btn-principal" (click)="Ingresar()">Ingresar</button>
+        <button type="button" class=" btn-principal" (click)="modal.close('Save click')">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,106 @@
+<div class="row" *ngIf="!dataCustomer">
+    <div class="col-md 12">
+        <h3>Form dataCustomer</h3>
+        <form>
+            <div class="form-group">
+                <label>RUC *</label>
+                <input type="text" class="form-control" name="ruc" [(ngModel)]="ruc" placeholder="Digitar RUC" required>
+            </div>
+            <div class="form-group">
+                <label>Razón Social *</label>
+                <input type="text" class="form-control" name="businessName" [(ngModel)]="businessName"
+                    placeholder="Digitar Razón Social" required>
+            </div>
+            <div class="form-group">
+                <label>Ciudad</label>
+                <select name="cities" [(ngModel)]="cities" class="form-control">
+                    <option value="1">Bogotá</option>
+                    <option value="2">Medellin</option>
+                    <option value="3">Barranquilla</option>
+                    <option value="4">Cartagena</option>
+                    <option value="5">Bucaramanga</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Dirección *</label>
+                <input type="text" class="form-control" name="address" [(ngModel)]="address" placeholder="address"
+                    required>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn-principal m-lr-15 btn a-btn" [routerLink]="['']"
+                            routerLinkActive="router-link-active">
+                            <label class="label">Cancelar</label></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn-principal m-lr-15 btn a-btn" (click)="NextFormCustomer()">
+                            <label class="label">Siguiente</label></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" *ngIf="contactCustomer == true">
+    <div class="col-md-12">
+        <h3>Form contactCommercial</h3>
+        <form>
+            <div class="form-group">
+                <label>Contacto *</label>
+                <input type="text" class="form-control" [(ngModel)]="nameContact" name="nameContact"
+                    placeholder="Escriba Nombre Contacto">
+            </div>
+            <div class="form-group">
+                <label>Telefo Empresa *</label>
+                <input type="text" class="form-control" name="companyPhone" [(ngModel)]="companyPhone"
+                    placeholder="Escriba el telefono de su empresa">
+            </div>
+            <div class="form-group">
+                <label>Celular *</label>
+                <input type="text" class="form-control" name="cellContact" [(ngModel)]="cellContact"
+                    placeholder="Escriba Celular Contacto">
+            </div>
+            <div class="form-group">
+                <label>Cargo *</label>
+                <input type="text" class="form-control" name="contactCharge" [(ngModel)]="contactCharge"
+                    placeholder="Cargo Contacto">
+            </div>
+            <div class="form-group">
+                <label>Correo Electronico *</label>
+                <input type="email" class="form-control" name="emailContact" [(ngModel)]="emailContact"
+                    placeholder="Correo Electronico Contacto">
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn-principal m-lr-15 btn a-btn" (click)="ReturnDataCustomer()"><label
+                                class="label">Regresar</label></a>
+                    </div>
+
+                    <div class="col-md-6">
+                        <a class="btn-principal m-lr-15 btn a-btn"><label class="label"
+                                (click)="open(successfulUser)">Finalizar</label></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-template #successfulUser let-modal>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-cente">
+                <img src="../../../assets/UsuarioCreado.PNG" alt="Usuario" width="130px">
+            </div>
+            <h4 class="modal-title text-center letterGoba" id="modal-basic-title" [ngStyle]="{'font-size':'medium'}">EL
+                USUARIO HA SIDO CREADO</h4>
+            <h5 class="letterGoba">Se envió información a su correo electrónico</h5>
+        </div>
+        <a class="pulse animated infinite btn-principal m-lr-15 btn a-btn" [routerLink]="['']"
+            routerLinkActive="router-link-active" (click)="modalClose(successfulUser)">
+            <label class="label">Aceptar</label></a>
+    </div>
+</ng-template>

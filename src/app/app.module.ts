@@ -12,21 +12,43 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // Dependecia para utilizar ngmodel en los formularios
 import { FormsModule } from '@angular/forms';
-//Modulo de Rutas
-import {Routes, RouterModule,} from '@angular/router';
+// Modulo de Rutas
+import { Routes, RouterModule } from '@angular/router';
 import { HomeUserComponent } from './Component/home-user/home-user.component';
+import { NoticiasComponent } from './Component/home-principal/noticias/noticias.component';
+import { ContactenosComponent } from './Component/home-principal/contactenos/contactenos.component';
+import { FaqComponent } from './Component/home-principal/faq/faq.component';
+import { ProcesosComponent } from './component/home-principal/procesos/procesos.component';
+import { QuienesSomosComponent } from './component/home-principal/quienes-somos/quienes-somos.component';
+import { UserGroupComponent } from './Component/user-group/user-group.component';
+import { CustomerComponent } from './Component/user-group/customer/customer.component';
+import { CommercialComponent } from './Component/user-group/commercial/commercial.component';
 const rutas = [
-              {path:'',component:HomePrincipalComponent },
-              {path:'user', component: HomeUserComponent}
-
-            ];
+  // { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', component: HomePrincipalComponent },
+  { path: 'user', component: HomeUserComponent },
+  { path: 'noticias', component: NoticiasComponent },
+  { path: 'contactenos', component: ContactenosComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'procesos', component: ProcesosComponent },
+  { path: 'quienesSomos', component: QuienesSomosComponent },
+  { path: 'customer', component: CustomerComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavegationComponent,
     HomePrincipalComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    NoticiasComponent,
+    ContactenosComponent,
+    FaqComponent,
+    ProcesosComponent,
+    QuienesSomosComponent,
+    UserGroupComponent,
+    CustomerComponent,
+    CommercialComponent
   ],
   imports: [
     BrowserModule,

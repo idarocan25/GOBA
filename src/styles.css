@@ -14994,3 +14994,8 @@ readers do not read off random characters that represent icons */
   .fa.fa-spotify {
     font-family: 'Font Awesome 5 Brands';
     font-weight: 400; }
+
+
+    .main-container{
+      margin-top: 20px;
+  }

@@ -1,132 +1,182 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
+    <div class="container">
+        <div class="left">
+            <div>
+                <img width="109" src="../../../assets/brand-logo.png">
+            </div>
+        </div>
+        <div class="right">
+            <button class="pulse animated infinite btn-principal m-lr-15" (click)="open(content)">Registrar Usuario</button>
+            <a class="btn a-btn access-header" (click)="access(accessAccount)">Acceder Cuenta</a>
 
-    <div class="left">
-      <div>
-        <img width="109" src="../../../assets/brand-logo.png">
-      </div>
-    </div>
-
-    <div class="right">
-
-      <button class="pulse animated infinite btn-principal m-lr-15" (click)="open(content)">Registrese</button>
-      <a class="btn a-btn access-header">Acceder Cuenta</a>
-
-      <div ngbDropdown class="d-inline-block">
-        <a id="dropdownBasic1 " ngbDropdownToggle>
-          <img width="20" src="../../../assets/spanish.png" alt="">
-        </a>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1"
-          style="min-width: 0px; background: transparent; border: transparent;">
-          <button ngbDropdownItem>
+            <div ngbDropdown class="d-inline-block">
+                <a id="dropdownBasic1 " ngbDropdownToggle>
+                    <img width="20" src="../../../assets/spanish.png" alt="">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="min-width: 0px; background: transparent; border: transparent;">
+                    <button ngbDropdownItem>
             <img width="47" src="../../../assets/spanish.png">
             <div class="language-text">
               Español
             </div>
           </button>
 
-          <button ngbDropdownItem>
+                    <button ngbDropdownItem>
             <img width="47" src="../../../assets/english.png">
             <div class="language-text">
               Ingles
             </div>
           </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-  </div>
 </nav>
-
 <!--Modal -->
 <ng-template #content let-modal>
-  <div *ngIf="modalUserGroup == true">
-    <div class="modal-header">
-      <h4 class="modal-title text-center letterGoba" id="modal-basic-title">CONFIRME A QUE GRUPO DE USUARIO PERTENECE
-      </h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-
-    <div class="modal-body">
-      <div class="row text-center" *ngIf="hide == true">
-        <div class="col-md-6">
-          <img src="../../../assets/Cliente.png" (click)="InvokeCustomerComponent(content, contentLanguage)"
-            class="btn btn-img" width="90%">
+    <div *ngIf="modalUserGroup == true">
+        <div class="modal-header">
+            <h4 class="modal-title text-center letterGoba" id="modal-basic-title">CONFIRME A QUE GRUPO DE USUARIO PERTENECE
+            </h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
-        <div class="col-md-6">
-          <img src="../../../assets/Aliado-Comercial.png" class="btn btn-img" width="90%">
-        </div>
-      </div>
 
-      <a class="btn-principal m-lr-15 btn a-btn" (click)="modal.close('Save click')" *ngIf="hide == true"><label
+        <div class="modal-body">
+            <div class="row text-center" *ngIf="hide == true">
+
+
+                <div class="col-md-6">
+                    <img src="../../../assets/Cliente.png" (click)="InvokeCustomerComponent(content, contentCustomer)" class="btn btn-img" width="90%">
+
+
+                    <ng-template #contentCustomer let-modal>
+                        <div *ngIf="modalUserGroup == true">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-center letterGoba" id="modal-basic-title" style="text-transform: uppercase;">confirmar el país donde usted o la empresa se encuentran constituidos</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="row text-center" *ngIf="hide == true">
+                                    <div class="col-md-4">
+                                        <img src="../../../assets/icon-country-1.png" (click)="modalClose(contentCustomer)" [routerLink]="['customer']" routerLinkActive="router-link-active" class="btn btn-img" width="90%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="../../../assets/icon-country-2.png" (click)="modalClose(contentCustomer)" [routerLink]="['customer']" routerLinkActive="router-link-active" class="btn btn-img" width="90%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="../../../assets/icon-country-3.png" (click)="modalClose(contentCustomer)" [routerLink]="['customer']" routerLinkActive="router-link-active" class="btn btn-img" width="90%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="col-md-6">
+                    <img src="../../../assets/Aliado-Comercial.png" (click)="InvokeCommercialComponent(content, contentCommercial)" class="btn btn-img" width="90%">
+
+                    <ng-template #contentCommercial let-modal>
+                        <div *ngIf="modalUserGroup == true">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-center letterGoba" id="modal-basic-title" style="text-transform: uppercase;">confirmar el país donde usted o la empresa se encuentran constituidos</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="row text-center" *ngIf="hide == true">
+                                    <div class="col-md-4">
+                                        <img src="../../../assets/icon-country-1.png" (click)="modalCloseComercial(contentCommercial, confirmTypeId)" class="btn btn-img" width="90%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="../../../assets/icon-country-2.png" (click)="modalCloseComercial(contentCommercial, confirmTypeId)" class="btn btn-img" width="90%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="../../../assets/icon-country-3.png" (click)="modalCloseComercial(contentCommercial, confirmTypeId)" class="btn btn-img" width="90%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                </div>
+            </div>
+
+            <a class="btn-principal m-lr-15 btn a-btn" (click)="modal.close('Save click')" *ngIf="hide == true"><label
           class="label">Cancelar</label>
       </a>
+        </div>
     </div>
-  </div>
 </ng-template>
-
-
-<ng-template #contentLanguage let-modal>
-  <div *ngIf="modalUserGroup == true">
+<!--Modal Acceder Cuenta-->
+<ng-template #accessAccount let-modal>
     <div class="modal-header">
-      <h4 class="modal-title text-center letterGoba" id="modal-basic-title">SELECCIONAR LENGUAJE</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="text-center" style="width:100%">
+            <img width="109" src="../../../assets/brand-logo.png" />
+        </div>
     </div>
+    <div class="lineal-modal-img"></div>
 
     <div class="modal-body">
-      <div class="row text-center" *ngIf="hide == true">
-        <div class="col-md-4">
-          <img src="../../../assets/Cliente.png" (click)="modalClose(contentLanguage)"  class="btn btn-img" width="90%">
-        </div>
-        <div class="col-md-4">
-          <img src="../../../assets/Aliado-Comercial.png"  (click)="modalClose(contentLanguage)" [routerLink]="['customer']" routerLinkActive="router-link-active"  class="btn btn-img" width="90%">
-        </div>
-        <div class="col-md-4">
-          <img src="../../../assets/Aliado-Comercial.png" class="btn btn-img" width="90%">
-        </div>
-      </div>
+        <form>
+            <!-- <div class="form-group">
+                <label for="usr" class="title-input">Usuario *</label>
+                <input type="text" class="form-control form-global" id="usr" [(ngModel)]="user" name="user" placeholder="Digite su Usuario">
+            </div> -->
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Digite su usuario" [autofocus]="true">
+            </mat-form-field>
+
+
+            <div class="form-group">
+                <!-- <label for="usr" class="title-input">Contraseña *</label>
+                <input type="password" class="form-control form-global" id="password" [(ngModel)]="password" name="password" placeholder="Digite Su Contraseña"> -->
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Digite su contraseña">
+                    </mat-form-field>
+                </div>
+                <mat-checkbox>
+                    Recordar contraseña
+                </mat-checkbox>
+                <div class="reset-pass-content">
+                    Reestablecer Contraseña
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class=" modal-footer text-center ">
+                <button type="button" class=" btn-principal" (click)="Ingresar()">Ingresar</button>
+                <button type="button" class=" btn-principal" (click)="modal.close('Save click')">Cancelar</button>
+            </div>
+        </form>
     </div>
-  </div>
 </ng-template>
 
+<ng-template #confirmTypeId let-modal>
+    <div class="modal-header">
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <h4 class="modal-title text-center letterGoba" id="modal-basic-title">CONFIRMAR TIPO IDENTIFICACIÓN</h4>
+                </div>
+                <div class="form-group">
+                    <select name="ruc" class="form-control">
+                            <option value="1">RUC</option>
+                            <option value="2">Cédula</option>
+                            <option value="3">Pasaporte</option>
+                        </select>
 
-
-
-
-
-
-
-<!--Modal Acceder Cuenta-->
-<ng-template #accederCuenta let-modal>
-  <div class="modal-header">
-    <div class="text-center" style="width:100%">
-      <img width="109" src="../../../assets/brand-logo.png" />
-    </div>
-  </div>
-  <div class="lineal-modal-img"></div>
-
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="usr" class="title-input">Usuario *</label>
-        <input type="text" class="form-control form-global" id="usr" [(ngModel)]="user" name="user"
-          placeholder="Digite su Usuario">
-      </div>
-      <div class="form-group">
-        <label for="usr" class="title-input">Contraseña *</label>
-        <input type="password" class="form-control form-global" id="password" [(ngModel)]="password" name="password"
-          placeholder="Digite Su Contraseña">
-        <div class="reset-pass-content">
-          Reestablecer Contraseña
+                    <input type="text" class="form-control" name="tipoDocumento" placeholder="selecciona el campo correspondiente" required>
+                </div>
+                <br>
+                <br>
+                <!-- Modal footer -->
+                <div class=" modal-footer text-center ">
+                    <button type="button" class=" btn-principal" (click)="modalClose(confirmTypeId)" [routerLink]="['commercial']">siguiente</button>
+                    <button type="button" class=" btn-principal" (click)="modal.close('Save click')">Cancelar</button>
+                </div>
+            </form>
         </div>
-      </div>
-      <br>
-      <br>
-      <!-- Modal footer -->
-      <div class=" modal-footer text-center ">
-        <button type="button" class=" btn-principal" (click)="Ingresar()">Ingresar</button>
-        <button type="button" class=" btn-principal" (click)="modal.close('Save click')">Cancelar</button>
-      </div>
-    </form>
-  </div>
+    </div>
 </ng-template>

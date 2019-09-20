@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./navegation.component.css']
 })
 export class NavegationComponent implements OnInit {
-
   // variables Login//
   user: string;
   password: string;
@@ -19,11 +18,11 @@ export class NavegationComponent implements OnInit {
   hide = true;
   dataCustomer = false;
   contactCustomer = false;
-
-modalUserGroup = true;
+  modalUserGroup = true;
 
   // Campo De la modal no borrar esto ocasionaria que la modal dejara de funcionar
-  closeResult: string
+  closeResult: string;
+  customer: string;
 
 
   constructor(public DialogService: DialogService,
@@ -34,65 +33,9 @@ modalUserGroup = true;
   ngOnInit() {
   }
 
-
-  // antes de enviar los datos por el metodo post se debe generar la contraseña ese metodo no ha sido creado
-  // FCliente() {
-  //   debugger;
-  //   if (this.Contacto != null && this.TelefonoEmpresa != null && this.CargoContacto != null && this.EmailContacto != null) {
-  //     this.ObjCliente = {
-  //       Ruc: this.Ruc, RazonSocial: this.RazonSocial, Ciudades: this.Ciudades, Direccion: this.Direccion,
-  //       Contacto: this.Contacto, TelefonoEmpresa: this.TelefonoEmpresa, CargoContacto: this.CargoContacto, EmailContacto: this.EmailContacto
-  //     }
-
-  //     this.ocultar = false;
-  //     this.DatosGenelaresCliente = false;
-  //     this.DatosContactoCliente = false;
-  //     this.UsuarioExitoso = true;
-
-  //     this.DatosGenelaresAliado = false;
-  //     this.DatosContactoAliado = false;
-  //     //this.UsuarioAliadoExitoso = true;
-
-
-  //     console.log(this.ObjCliente);
-  //     this.Ruc, this.RazonSocial, this.Ciudades, this.Ciudades, this.Direccion, this.Contacto, this.TelefonoEmpresa, this.CargoContacto, this.EmailContacto = ' ';
-  //     this.toastr.success('Usuario Creado Exitosa Mente', 'Operacion Exitosa');
-  //   } else {
-  //     this.toastr.warning('Por Favor llene los campos Obligatorios *', 'Verificacion');
-  //   }
-  // }
-
-  // FAliado() {
-  //   debugger;
-  //   if (this.Contacto != null && this.TelefonoEmpresa != null && this.CargoContacto != null && this.EmailContacto != null) {
-  //     this.ObjCliente = {
-  //       Ruc: this.Ruc, RazonSocial: this.RazonSocial, Ciudades: this.Ciudades, Direccion: this.Direccion,
-  //       Contacto: this.Contacto, TelefonoEmpresa: this.TelefonoEmpresa, CargoContacto: this.CargoContacto, EmailContacto: this.EmailContacto
-  //     }
-
-  //     this.ocultar = false;
-  //     this.DatosGenelaresAliado = false;
-  //     this.DatosContactoAliado = false;
-  //     this.UsuarioAliadoExitoso = true;
-
-
-  //     console.log(this.ObjCliente);
-  //     this.Ruc, this.RazonSocial, this.Ciudades, this.Ciudades, this.Direccion, this.Contacto, this.TelefonoEmpresa, this.CargoContacto, this.EmailContacto = ' ';
-  //     this.toastr.success('Usuario Creado Exitosa Mente', 'Operacion Exitosa');
-  //   } else {
-  //     this.toastr.warning('Por Favor llene los campos Obligatorios *', 'Verificacion');
-  //   }
-  // }
-
-  // Cancelar() {
-  //   this.ocultar = true;
-  //   this.DatosGenelaresCliente = false;
-  //   this.DatosContactoCliente = false;
-  //   this.DatosGenelaresAliado = false;
-  //   this.DatosContactoAliado = false;
-  // }
-
   open(content) {
+  
+
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -100,8 +43,8 @@ modalUserGroup = true;
     });
   }
 
-  acceder(accederCuenta) {
-    this.modalService.open(accederCuenta, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+  access(accessAccount) {
+    this.modalService.open(accessAccount, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -109,7 +52,6 @@ modalUserGroup = true;
   }
 
   Ingresar(){
-    debugger;
     const cantidadMinimaCaracteresContrasena = 8;
 
     if (this.password.length < cantidadMinimaCaracteresContrasena) {
@@ -140,27 +82,44 @@ modalUserGroup = true;
     }
   }
 
-  InvokeCustomerComponent(content, contentLanguage) {
-    console.log('contentLanguage', contentLanguage);
+  InvokeCustomerComponent(content, contentCustomer) {
     this.modalService.dismissAll(content);
 
-    this.modalService.open(contentLanguage, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    this.modalService.open(contentCustomer, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
 
-
-    // this.modalService.dismissAll(contentLanguage);
-
-    // this.hide = false;
-    // this.modalUserGroup = false;
     // this.router.navigate(['customer']);
+  }
+
+
+  InvokeCommercialComponent(content, contentCommercial) {
+    this.modalService.dismissAll(content);
+
+    this.modalService.open(contentCommercial, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
+    // this.router.navigate(['commercial']);
   }
 
 
   modalClose(contentLanguage) {
     this.modalService.dismissAll(contentLanguage);
+  }
+
+  modalCloseComercial(contentCommercial, confirmTypeId) {
+    this.modalService.dismissAll(contentCommercial);
+
+    this.modalService.open(confirmTypeId, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
 

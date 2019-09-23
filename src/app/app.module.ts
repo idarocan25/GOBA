@@ -7,6 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavegationComponent } from './Component/navegation/navegation.component';
 import { HomePrincipalComponent } from './Component/home-principal/home-principal.component';
+
+// Reference Material Angular
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material/input';
+
+
 // Dependecias para la modal//
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +29,11 @@ import { QuienesSomosComponent } from './component/home-principal/quienes-somos/
 import { UserGroupComponent } from './Component/user-group/user-group.component';
 import { CustomerComponent } from './Component/user-group/customer/customer.component';
 import { CommercialComponent } from './Component/user-group/commercial/commercial.component';
+import { ModalConfirmTypeIdComponent } from './Component/user-group/commercial/modal-confirm-type-id/modal-confirm-type-id.component';
+import { NaturalPersonComponent } from './Component/user-group/commercial/natural-person/natural-person.component';
+import { LegalPersonComponent } from './Component/user-group/commercial/legal-person/legal-person.component';
+import { ModalService } from './Component/user-group/commercial/modal.service';
+
 const rutas = [
   // { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '', component: HomePrincipalComponent },
@@ -32,7 +43,9 @@ const rutas = [
   { path: 'faq', component: FaqComponent },
   { path: 'procesos', component: ProcesosComponent },
   { path: 'quienesSomos', component: QuienesSomosComponent },
-  { path: 'customer', component: CustomerComponent }
+  { path: 'customer', component: CustomerComponent },
+  { path: 'commercial', component: CommercialComponent }
+
 ];
 
 @NgModule({
@@ -48,7 +61,10 @@ const rutas = [
     QuienesSomosComponent,
     UserGroupComponent,
     CustomerComponent,
-    CommercialComponent
+    CommercialComponent,
+    ModalConfirmTypeIdComponent,
+    NaturalPersonComponent,
+    LegalPersonComponent
   ],
   imports: [
     BrowserModule,
@@ -56,11 +72,13 @@ const rutas = [
     NgbModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatInputModule,
     FormsModule,
     RouterModule.forRoot(rutas)
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [ ModalService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

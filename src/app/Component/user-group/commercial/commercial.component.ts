@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-commercial',
@@ -14,9 +16,8 @@ export class CommercialComponent implements OnInit {
   dataCommercial = false;
   contactCommercial = false;
 
-
-  constructor() { }
-
+  constructor(private modalService: NgbModal) {
+  }
   ngOnInit() {
   }
 

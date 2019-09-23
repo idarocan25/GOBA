@@ -86,6 +86,7 @@ export class NavegationComponent implements OnInit {
     this.modalService.dismissAll(content);
 
     this.modalService.open(contentCustomer, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -105,6 +106,7 @@ export class NavegationComponent implements OnInit {
     });
 
     // this.router.navigate(['commercial']);
+
   }
 
 
@@ -121,7 +123,5 @@ export class NavegationComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-
-
 
 }

@@ -33,6 +33,7 @@ import { ModalConfirmTypeIdComponent } from './Component/user-group/commercial/m
 import { NaturalPersonComponent } from './Component/user-group/commercial/natural-person/natural-person.component';
 import { LegalPersonComponent } from './Component/user-group/commercial/legal-person/legal-person.component';
 import { ModalService } from './Component/user-group/commercial/modal.service';
+
 const rutas = [
   // { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '', component: HomePrincipalComponent },
@@ -44,6 +45,7 @@ const rutas = [
   { path: 'quienesSomos', component: QuienesSomosComponent },
   { path: 'customer', component: CustomerComponent },
   { path: 'commercial', component: CommercialComponent }
+
 ];
 
 @NgModule({

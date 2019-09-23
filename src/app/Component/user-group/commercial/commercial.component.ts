@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({
   selector: 'app-commercial',
   templateUrl: './commercial.component.html',
@@ -17,7 +18,6 @@ export class CommercialComponent implements OnInit {
 
   constructor(private modalService: NgbModal) {
   }
-
   ngOnInit() {
   }
 
